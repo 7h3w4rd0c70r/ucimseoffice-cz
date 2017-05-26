@@ -28,7 +28,8 @@ module.exports = {
             smart:      path.resolve(__dirname, 'src/components/smart'),
             dumb:       path.resolve(__dirname, 'src/components/dumb'),
             stores:     path.resolve(__dirname, 'src/stores'),
-            sources:    path.resolve(__dirname, 'src/sources')
+            sources:    path.resolve(__dirname, 'src/sources'),
+            lib:        path.resolve(__dirname, 'src/lib')
         }
     },
     devServer: {
@@ -57,7 +58,29 @@ module.exports = {
                 })
             },
             {
-                test: /\.(png|svg|jpg)$/,
+                test: /\.svg$/,
+                use: [{
+                    loader: 'babel-loader',
+                    query: {
+                        presets: ['es2015', 'react']
+                    }
+                },{
+                    loader: 'react-svg-loader',
+                    query: {
+                        svgo: {
+                            plugins: [
+                                { removeTitle: true },
+                                { removeMetadata: true },
+                                { removeDoctype: true },
+                                { removeXMLProcInst: true },
+                                { removeXMLNS: true }
+                            ]
+                        }
+                    }
+                }]
+            },
+            {
+                test: /\.(png|jpg)$/,
                 loader: 'file-loader?name=./img/[hash].[ext]'
             },
             {

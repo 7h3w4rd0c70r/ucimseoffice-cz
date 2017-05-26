@@ -1,0 +1,47 @@
+
+.team {
+    & > .header {
+        font-family: RobotoLight;
+        font-size: 4rem;
+        color: @DarkGray;
+        padding: 2rem 0 0 0;
+    }
+}
+
+.profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    & > .profile {
+        width: 42.5%;
+        padding: 1rem;
+
+        & > .avatar {
+            display: inline-block;
+            height: 100%;
+            float: left;
+            padding: 1rem 1rem 0 0;
+
+            & > img {
+                width: 8rem;
+                height: 8rem;
+                border-radius: 50%;
+            }
+        }
+
+        & > .name {
+            font-family: RobotoLight;
+            font-size: 2.5rem;
+            transition: all .2s ease-in;
+            &:hover {
+                color: @Orange;
+            }
+        }
+
+        & > .about {
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+    }
+}
